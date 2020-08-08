@@ -1,0 +1,39 @@
+{
+  "name": "convert-kitchen",
+  "version": "1.0.0",
+  "description": "convert international volumes, weights and idiomatic measurements for kitchen ingredients",
+  "main": "index.js",
+  "author": "Indimeco <18373729+Indimeco@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.27.1",
+    "typescript": "^3.7.4"
+  },
+  "devDependencies": {
+    "@indimeco/eslint-config-indimeco": "1.3.0",
+    "@types/ramda": "^0.27.14",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.19.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}
