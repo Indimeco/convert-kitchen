@@ -1,0 +1,7 @@
+// TODO - make region more like 'classification'
+// TODO - make convert compute value and output unit like 'ml' or 'g' instead of region
+
+// SECTION - Future
+// TODO - create fuzzy interfaces for specifying region without classification
+// TODO - create fuzzy interfaces for specifying aliases or permutations of names e.g., "c", "cup", "cups"
+// TODO - create intelligent service for helpfully closest integer unit to fulfil the conversion

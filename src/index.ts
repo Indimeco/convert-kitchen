@@ -1,15 +1,15 @@
-import { unit } from './types';
-import { definitions, definitionType } from './definitions';
+import { unit, Eregion, definitionType } from './types';
+import { definitions } from './definitions';
 
-const getDefinition = (u: unit): definitionType => {
-  return definitions[u.region][u.name];
+const getDefinition = ({ region, name }: { region: Eregion; name: string }): definitionType => {
+  return definitions[region][name];
 };
 
-type Tconvert = ({ from, to }: { from: unit; to: unit }) => unit;
-export const convert: Tconvert = ({ from, to }) => {
-  const fromDef = getDefinition(from);
-  const toDef = getDefinition(to);
+type Tconvert = ({ fromUnit, toRegion }: { fromUnit: unit; toRegion: Eregion }) => unit;
+export const convert: Tconvert = ({ fromUnit, toRegion }) => {
+  const fromDef = getDefinition({ name: fromUnit.name, region: fromUnit.region });
+  const toDef = getDefinition({ name: fromUnit.name, region: toRegion });
 
-  const conversion = (fromDef.value * from.quantity) / toDef.value;
-  return { ...to, quantity: conversion };
+  const conversion = (fromDef.value * fromUnit.quantity) / toDef.value;
+  return { name: fromUnit.name, region: toRegion, quantity: conversion };
 };
