@@ -1,10 +1,10 @@
 export type unit = {
   quantity: number;
   name: string;
-  region: Eregion;
+  classification: Eclassification;
 };
 
-export enum Eregion {
+export enum Eclassification {
   metric = 'metric',
   us = 'us',
   imperial = 'imperial',
@@ -21,7 +21,7 @@ export type definitionType = {
 };
 
 export type defintionsType = {
-  [region in Eregion]: {
+  [classification in Eclassification]: {
     [name: string]: definitionType;
   };
 };

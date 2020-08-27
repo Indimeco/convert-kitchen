@@ -16,6 +16,14 @@ export const definitions: defintionsType = {
     },
   },
   metric: {
+    mililitre: {
+      value: 1000,
+      type: EmeasurementType.VOLUME,
+    },
+    litre: {
+      value: 1000000,
+      type: EmeasurementType.VOLUME,
+    },
     cup: {
       value: 250000,
       type: EmeasurementType.VOLUME,

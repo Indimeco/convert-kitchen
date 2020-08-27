@@ -1,15 +1,39 @@
-import { unit, Eregion, definitionType } from './types';
+import { unit, Eclassification, definitionType } from './types';
 import { definitions } from './definitions';
 
-const getDefinition = ({ region, name }: { region: Eregion; name: string }): definitionType => {
-  return definitions[region][name];
+const getDefinition = ({ classification, name }: { classification: Eclassification; name: string }): definitionType => {
+  return definitions[classification][name];
 };
 
-type Tconvert = ({ fromUnit, toRegion }: { fromUnit: unit; toRegion: Eregion }) => unit;
-export const convert: Tconvert = ({ fromUnit, toRegion }) => {
-  const fromDef = getDefinition({ name: fromUnit.name, region: fromUnit.region });
-  const toDef = getDefinition({ name: fromUnit.name, region: toRegion });
+const convertValue = ({
+  fromValue,
+  fromQuantity,
+  toValue,
+}: {
+  fromValue: number;
+  fromQuantity: number;
+  toValue: number;
+}): number => (fromValue * fromQuantity) / toValue;
 
-  const conversion = (fromDef.value * fromUnit.quantity) / toDef.value;
-  return { name: fromUnit.name, region: toRegion, quantity: conversion };
+export const convert = ({
+  fromUnit,
+  toClassification,
+}: {
+  fromUnit: unit;
+  toClassification: {
+    classification: Eclassification;
+    name?: string;
+  };
+}): unit => {
+  const targetName = toClassification.name ?? fromUnit.name;
+  const fromDef = getDefinition({ name: fromUnit.name, classification: fromUnit.classification });
+  const toDef = getDefinition({ name: targetName, classification: toClassification.classification });
+
+  const conversion = convertValue({ fromValue: fromDef.value, fromQuantity: fromUnit.quantity, toValue: toDef.value });
+
+  return {
+    name: targetName,
+    classification: toClassification.classification,
+    quantity: conversion,
+  };
 };

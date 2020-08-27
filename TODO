@@ -1,5 +1,4 @@
-// TODO - make region more like 'classification'
-// TODO - make convert compute value and output unit like 'ml' or 'g' instead of region
+// TODO - handle aliases e.g., c or ml
 
 // SECTION - Future
 // TODO - create fuzzy interfaces for specifying region without classification
