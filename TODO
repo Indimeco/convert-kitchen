@@ -1,6 +1,7 @@
-// TODO - handle aliases e.g., c or ml
+// TODO - temperature, looks like this will require a change to the dictionary https://www.metric-conversions.org/temperature/fahrenheit-to-celsius.htm
+// TODO - weight
 
 // SECTION - Future
 // TODO - create fuzzy interfaces for specifying region without classification
-// TODO - create fuzzy interfaces for specifying aliases or permutations of names e.g., "c", "cup", "cups"
-// TODO - create intelligent service for helpfully closest integer unit to fulfil the conversion
+// TODO - create intelligent service for closest integer unit to fulfil the conversion
+// TODO - create natural language interface

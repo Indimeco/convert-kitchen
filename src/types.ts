@@ -13,15 +13,15 @@ export enum Eclassification {
 export enum EmeasurementType {
   VOLUME = 'volume',
   WEIGHT = 'weight',
+  TEMPERATURE = 'temperature',
 }
 
 export type definitionType = {
+  name: string[];
   value: number;
   type: EmeasurementType;
 };
 
 export type defintionsType = {
-  [classification in Eclassification]: {
-    [name: string]: definitionType;
-  };
+  [classification in Eclassification]: definitionType[];
 };

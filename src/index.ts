@@ -1,8 +1,10 @@
 import { unit, Eclassification, definitionType } from './types';
-import { definitions } from './definitions';
+import { definitions } from './defintions';
 
 const getDefinition = ({ classification, name }: { classification: Eclassification; name: string }): definitionType => {
-  return definitions[classification][name];
+  const def = definitions[classification].find((definition: definitionType) => definition.name.includes(name));
+  if (!def) throw new Error(`Could not find definition for unit ${name}`);
+  return def;
 };
 
 const convertValue = ({

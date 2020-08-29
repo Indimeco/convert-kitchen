@@ -28,4 +28,16 @@ describe('Convert', () => {
       quantity: 473.176,
     });
   });
+
+  it('converts from us cups to metric mililiters by alias', () => {
+    const result = convert({
+      fromUnit: usCupsUnit,
+      toClassification: { classification: Eclassification.metric, name: 'ml' },
+    });
+    expect(result).toStrictEqual({
+      name: 'ml',
+      classification: 'metric',
+      quantity: 473.176,
+    });
+  });
 });
