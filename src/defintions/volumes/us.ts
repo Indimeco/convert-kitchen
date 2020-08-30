@@ -4,17 +4,17 @@ import { cupsNames, tablespoonsNames, teaspoonsNames } from '../sharedNames';
 export const usVolumes = [
   {
     name: cupsNames,
-    value: 236588,
+    value: 236.588,
     type: EmeasurementType.VOLUME,
   },
   {
     name: tablespoonsNames,
-    value: 14800,
+    value: 14.8,
     type: EmeasurementType.VOLUME,
   },
   {
     name: teaspoonsNames,
-    value: 4929,
+    value: 4.929,
     type: EmeasurementType.VOLUME,
   },
 ];
