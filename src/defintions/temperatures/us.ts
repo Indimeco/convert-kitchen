@@ -1,3 +1,5 @@
+import { Definition } from '../../types';
+
 import { fahrenheit } from './shared';
 
-export const usTemperatures = [fahrenheit];
+export const usTemperatures: Definition[] = [fahrenheit];

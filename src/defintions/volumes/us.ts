@@ -1,20 +1,20 @@
-import { EmeasurementType } from '../../types';
+import { Measurements, Definition } from '../../types';
 import { cupsNames, tablespoonsNames, teaspoonsNames } from '../sharedNames';
 
-export const usVolumes = [
+export const usVolumes: Definition[] = [
   {
     name: cupsNames,
     value: 236.588,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: tablespoonsNames,
     value: 14.8,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: teaspoonsNames,
     value: 4.929,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
 ];

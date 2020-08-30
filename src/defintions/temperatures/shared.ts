@@ -1,8 +1,8 @@
-import { definitionType, EmeasurementType } from '../../types';
+import { Definition, Measurements } from '../../types';
 
-export const fahrenheit: definitionType = {
+export const fahrenheit: Definition = {
   name: ['fahrenheit', 'f', 'degrees'],
   value: 1,
   valueOffsetFromZero: -32,
-  type: EmeasurementType.TEMPERATURE,
+  type: Measurements.TEMPERATURE,
 };

@@ -1,27 +1,27 @@
-import { unit, Eclassification } from '../types';
+import { Measure, Classifications } from '../types';
 import { convert } from '../index';
 
 describe('Convert', () => {
   describe('volumes', () => {
-    const usCupsUnit: unit = {
-      classification: Eclassification.us,
+    const usCupsUnit: Measure = {
+      classification: Classifications.us,
       name: 'cup',
       quantity: 2,
     };
 
     it('converts from us cups to metric cups', () => {
-      const result = convert({ fromUnit: usCupsUnit, toClassification: { classification: Eclassification.metric } });
+      const result = convert({ fromUnit: usCupsUnit, toClassification: { classification: Classifications.metric } });
       expect(result).toStrictEqual({
         name: 'cup',
         classification: 'metric',
-        quantity: 1.892704,
+        quantity: 1.893,
       });
     });
 
     it('converts from us cups to metric mililiters', () => {
       const result = convert({
         fromUnit: usCupsUnit,
-        toClassification: { classification: Eclassification.metric, name: 'mililitre' },
+        toClassification: { classification: Classifications.metric, name: 'mililitre' },
       });
       expect(result).toStrictEqual({
         name: 'mililitre',
@@ -33,7 +33,7 @@ describe('Convert', () => {
     it('converts from us cups to metric mililiters by alias', () => {
       const result = convert({
         fromUnit: usCupsUnit,
-        toClassification: { classification: Eclassification.metric, name: 'ml' },
+        toClassification: { classification: Classifications.metric, name: 'ml' },
       });
       expect(result).toStrictEqual({
         name: 'ml',
@@ -43,13 +43,13 @@ describe('Convert', () => {
     });
   });
   describe('temperatures', () => {
-    const fahrenheitUnit: unit = {
-      classification: Eclassification.us,
+    const fahrenheitUnit: Measure = {
+      classification: Classifications.us,
       name: 'fahrenheit',
       quantity: 212,
     };
-    const celsiusUnit: unit = {
-      classification: Eclassification.metric,
+    const celsiusUnit: Measure = {
+      classification: Classifications.metric,
       name: 'celsius',
       quantity: 100,
     };
@@ -58,7 +58,7 @@ describe('Convert', () => {
       const result = convert({
         fromUnit: fahrenheitUnit,
         toClassification: {
-          classification: Eclassification.metric,
+          classification: Classifications.metric,
           name: 'celsius',
         },
       });
@@ -68,7 +68,7 @@ describe('Convert', () => {
       const result = convert({
         fromUnit: celsiusUnit,
         toClassification: {
-          classification: Eclassification.imperial,
+          classification: Classifications.imperial,
           name: 'fahrenheit',
         },
       });

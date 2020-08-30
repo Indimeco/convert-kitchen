@@ -1,28 +1,28 @@
-export type unit = {
+export type Measure = {
   quantity: number;
   name: string;
-  classification: Eclassification;
+  classification: Classifications;
 };
 
-export enum Eclassification {
+export enum Classifications {
   metric = 'metric',
   us = 'us',
   imperial = 'imperial',
 }
 
-export enum EmeasurementType {
+export enum Measurements {
   VOLUME = 'volume',
   WEIGHT = 'weight',
   TEMPERATURE = 'temperature',
 }
 
-export type definitionType = {
+export type Definition = {
   name: string[];
   value: number;
   valueOffsetFromZero?: number;
-  type: EmeasurementType;
+  type: Measurements;
 };
 
-export type defintionsType = {
-  [classification in Eclassification]: definitionType[];
+export type Definitions = {
+  [classification in Classifications]: Definition[];
 };

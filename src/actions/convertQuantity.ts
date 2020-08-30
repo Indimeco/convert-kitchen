@@ -1,4 +1,4 @@
-import { standardiseDictionaryValue } from './standardiseDictionaryValue';
+import { standardiseDictionaryValue, standardiseOutputValue } from './standardise';
 
 type ConversionMaterials = {
   fromValue: number;
@@ -16,5 +16,5 @@ export const convertQuantity = ({
   const standardisedTo = standardiseDictionaryValue(toValue);
   const standardisedOffset = fromValueOffset ? standardiseDictionaryValue(fromValueOffset) : 0;
 
-  return (standardisedFrom * fromQuantity + standardisedOffset) / standardisedTo;
+  return standardiseOutputValue((standardisedFrom * fromQuantity + standardisedOffset) / standardisedTo);
 };

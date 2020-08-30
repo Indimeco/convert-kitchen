@@ -1,30 +1,30 @@
-import { EmeasurementType } from '../../types';
+import { Measurements, Definition } from '../../types';
 import { cupsNames, tablespoonsNames, teaspoonsNames } from '../sharedNames';
 
-export const metricVolumes = [
+export const metricVolumes: Definition[] = [
   {
     name: ['mililitre', 'ml'],
     value: 1,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: ['litre', 'l'],
     value: 1000,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: cupsNames,
     value: 250,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: tablespoonsNames,
     value: 20,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
   {
     name: teaspoonsNames,
     value: 5,
-    type: EmeasurementType.VOLUME,
+    type: Measurements.VOLUME,
   },
 ];
