@@ -19,6 +19,7 @@ export enum EmeasurementType {
 export type definitionType = {
   name: string[];
   value: number;
+  valueOffsetFromZero?: number;
   type: EmeasurementType;
 };
 

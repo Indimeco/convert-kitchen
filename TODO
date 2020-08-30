@@ -1,6 +1,7 @@
-// TODO - temperature, looks like this will require a change to the dictionary https://www.metric-conversions.org/temperature/fahrenheit-to-celsius.htm
+// FIXME - can't convert cleanly to alias temperature c (celsius) because of alias volume c (cups)
 // TODO - weight
 // TODO - pluralise dictionary names programatically, e.g., cup(s)
+// TODO - alias selection by set intersection, e.g., 'celsius' !== 'fahrenheit', but 'degrees' is an element contained in the intersection of the sets containing 'celsius' and 'fahrenheit'
 
 // SECTION - Future
 // TODO - create fuzzy interfaces for specifying region without classification

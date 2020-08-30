@@ -40,4 +40,35 @@ describe('Convert Quantity', () => {
 
     expect(result).toStrictEqual(3500);
   });
+
+  describe('offset', () => {
+    it('uses offset to convert a non 0 based value', () => {
+      const result = convertQuantity({
+        fromValue: 4,
+        fromValueOffset: -20,
+        fromQuantity: 10,
+        toValue: 10,
+      });
+      expect(result).toStrictEqual(2);
+    });
+
+    it('uses offset to convert between fahrenheit and celsius', () => {
+      const result = convertQuantity({
+        fromValue: 1,
+        fromValueOffset: -32,
+        fromQuantity: 212,
+        toValue: 1.8,
+      });
+      expect(result).toStrictEqual(100);
+    });
+    it('uses offset to convert between celsius and fahrenheit', () => {
+      const result = convertQuantity({
+        fromValue: 1.8,
+        fromQuantity: 100,
+        fromValueOffset: 32,
+        toValue: 1,
+      });
+      expect(result).toStrictEqual(212);
+    });
+  });
 });

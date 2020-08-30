@@ -19,6 +19,7 @@ export const convert = ({ fromUnit, toClassification }: ConversionBlueprint): un
   const conversion = convertQuantity({
     fromValue: fromDef.value,
     fromQuantity: fromUnit.quantity,
+    fromValueOffset: fromDef.valueOffsetFromZero,
     toValue: toDef.value,
   });
 
