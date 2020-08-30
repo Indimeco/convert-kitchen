@@ -5,7 +5,7 @@ type ConversionMaterials = {
   fromQuantity: number;
   toValue: number;
 };
-export const convertValue = ({ fromValue, fromQuantity, toValue }: ConversionMaterials): number => {
+export const convertQuantity = ({ fromValue, fromQuantity, toValue }: ConversionMaterials): number => {
   const standardisedFrom = standardiseDictionaryValue(fromValue);
   const standardisedTo = standardiseDictionaryValue(toValue);
 

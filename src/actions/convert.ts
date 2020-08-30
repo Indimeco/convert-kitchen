@@ -1,7 +1,7 @@
 import { Eclassification, unit } from '../types';
 
 import { getDefinition } from './getDefinition';
-import { convertValue } from './convertValue';
+import { convertQuantity } from './convertQuantity';
 
 type ConversionBlueprint = {
   fromUnit: unit;
@@ -16,7 +16,11 @@ export const convert = ({ fromUnit, toClassification }: ConversionBlueprint): un
   const fromDef = getDefinition({ name: fromUnit.name, classification: fromUnit.classification });
   const toDef = getDefinition({ name: targetName, classification: toClassification.classification });
 
-  const conversion = convertValue({ fromValue: fromDef.value, fromQuantity: fromUnit.quantity, toValue: toDef.value });
+  const conversion = convertQuantity({
+    fromValue: fromDef.value,
+    fromQuantity: fromUnit.quantity,
+    toValue: toDef.value,
+  });
 
   return {
     name: targetName,

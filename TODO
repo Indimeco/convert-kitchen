@@ -1,5 +1,6 @@
 // TODO - temperature, looks like this will require a change to the dictionary https://www.metric-conversions.org/temperature/fahrenheit-to-celsius.htm
 // TODO - weight
+// TODO - pluralise dictionary names programatically, e.g., cup(s)
 
 // SECTION - Future
 // TODO - create fuzzy interfaces for specifying region without classification
