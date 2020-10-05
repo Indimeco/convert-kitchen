@@ -1,2 +1,2 @@
 export { convert } from './actions';
-export { Classifications } from './types';
+export { MeasurementSystem } from './types';

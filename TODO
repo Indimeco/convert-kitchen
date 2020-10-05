@@ -1,10 +1,9 @@
-// FIXME - can't convert cleanly to alias temperature c (celsius) because of alias volume c (cups)
 // TODO - weight
 // TODO - pluralise dictionary names programatically, e.g., cup(s)
 // TODO - alias selection by set intersection, e.g., 'celsius' !== 'fahrenheit', but 'degrees' is an element contained in the intersection of the sets containing 'celsius' and 'fahrenheit'
 // TODO - move husky/ls out of package.json
 
 // SECTION - Future
-// TODO - create fuzzy interfaces for specifying region without classification
+// TODO - create fuzzy interfaces for specifying region without measurementSystem
 // TODO - create intelligent service for closest integer unit to fulfil the conversion
 // TODO - create natural language interface

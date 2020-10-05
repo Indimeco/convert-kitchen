@@ -1,31 +1,40 @@
-import { Classifications, Measure } from '../types';
+import { MeasurementSystem, Measurement } from '../types';
 
 import { getDefinition } from './getDefinition';
 import { convertQuantity } from './convertQuantity';
 
 type ConversionBlueprint = {
-  fromUnit: Measure;
-  toClassification: {
-    classification: Classifications;
+  fromMeasurement: Measurement;
+  to: {
+    measurementSystem: MeasurementSystem;
     name?: string;
   };
 };
 
-export const convert = ({ fromUnit, toClassification }: ConversionBlueprint): Measure => {
-  const targetName = toClassification.name ?? fromUnit.name;
-  const fromDef = getDefinition({ name: fromUnit.name, classification: fromUnit.classification });
-  const toDef = getDefinition({ name: targetName, classification: toClassification.classification });
+export const convert = ({ fromMeasurement, to }: ConversionBlueprint): Measurement => {
+  const targetName = to.name ?? fromMeasurement.name;
+  const fromDef = getDefinition({
+    name: fromMeasurement.name,
+    measurementSystem: fromMeasurement.measurementSystem,
+    type: fromMeasurement.type,
+  });
+  const toDef = getDefinition({
+    name: targetName,
+    measurementSystem: to.measurementSystem,
+    type: fromMeasurement.type,
+  });
 
   const conversion = convertQuantity({
     fromValue: fromDef.value,
-    fromQuantity: fromUnit.quantity,
+    fromQuantity: fromMeasurement.quantity,
     fromValueOffset: fromDef.valueOffsetFromZero,
     toValue: toDef.value,
   });
 
   return {
     name: targetName,
-    classification: toClassification.classification,
+    measurementSystem: to.measurementSystem,
+    type: fromMeasurement.type,
     quantity: conversion,
   };
 };

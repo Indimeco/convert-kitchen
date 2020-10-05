@@ -15,20 +15,21 @@ The next time you're online looking at a recipe, have a wonder about the origin 
 
 ## Usage
 
-The `convert` export provides conversion from a given unit of measurement to a given classification.
+The `convert` export provides conversion from a given unit of measurement to a given unit of measurement or measurement system.
 
 ```typescript
-import { convert, Classifications } from 'convert-kitchen';
+import { convert, MeasurementSystem, MeasurementType } from 'convert-kitchen';
 
 const result = convert(
     { 
-        fromUnit: {
-            classification: Classifications.us,
+        fromMeasurement: {
+            measurementSystem: MeasurementSystem.US,
             name: 'cup',
             quantity: 2,
+            type: MeasurementType.VOLUME,
         },
-        toClassification: { 
-            classification: Classifications.metric
+        to: { 
+            measurementSystem: MeasurementSystem.METRIC
         } 
      }
 );
@@ -36,8 +37,9 @@ const result = convert(
 console.log(result);
 // {
 //    name: 'cup',
-//    classification: 'metric',
+//    measurementSystem:'metric',
 //    quantity: 1.893,
+//    type: 'volume',
 // }
     
 ```

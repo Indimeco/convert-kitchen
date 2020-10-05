@@ -1,74 +1,112 @@
-import { Measure, Classifications } from '../types';
+import { Measurement, MeasurementSystem, MeasurementType } from '../types';
 import { convert } from '../index';
 
 describe('Convert', () => {
   describe('volumes', () => {
-    const usCupsUnit: Measure = {
-      classification: Classifications.us,
+    const usCupsUnit: Measurement = {
+      measurementSystem: MeasurementSystem.us,
       name: 'cup',
       quantity: 2,
+      type: MeasurementType.VOLUME,
     };
 
     it('converts from us cups to metric cups', () => {
-      const result = convert({ fromUnit: usCupsUnit, toClassification: { classification: Classifications.metric } });
+      const result = convert({
+        fromMeasurement: usCupsUnit,
+        to: { measurementSystem: MeasurementSystem.metric },
+      });
       expect(result).toStrictEqual({
         name: 'cup',
-        classification: 'metric',
+        measurementSystem: MeasurementSystem.metric,
         quantity: 1.893,
+        type: MeasurementType.VOLUME,
+      });
+    });
+
+    it('converts from us cups to metric cups via alias', () => {
+      const aliasedCups = {
+        ...usCupsUnit,
+        name: 'c',
+      };
+      const result = convert({
+        fromMeasurement: aliasedCups,
+        to: { measurementSystem: MeasurementSystem.metric },
+      });
+      expect(result).toStrictEqual({
+        name: 'c',
+        measurementSystem: MeasurementSystem.metric,
+        quantity: 1.893,
+        type: MeasurementType.VOLUME,
       });
     });
 
     it('converts from us cups to metric mililiters', () => {
       const result = convert({
-        fromUnit: usCupsUnit,
-        toClassification: { classification: Classifications.metric, name: 'mililitre' },
+        fromMeasurement: usCupsUnit,
+        to: { measurementSystem: MeasurementSystem.metric, name: 'mililitre' },
       });
       expect(result).toStrictEqual({
         name: 'mililitre',
-        classification: 'metric',
+        measurementSystem: MeasurementSystem.metric,
         quantity: 473.176,
+        type: MeasurementType.VOLUME,
       });
     });
 
     it('converts from us cups to metric mililiters by alias', () => {
       const result = convert({
-        fromUnit: usCupsUnit,
-        toClassification: { classification: Classifications.metric, name: 'ml' },
+        fromMeasurement: usCupsUnit,
+        to: { measurementSystem: MeasurementSystem.metric, name: 'ml' },
       });
       expect(result).toStrictEqual({
         name: 'ml',
-        classification: 'metric',
+        measurementSystem: MeasurementSystem.metric,
         quantity: 473.176,
+        type: MeasurementType.VOLUME,
       });
     });
   });
   describe('temperatures', () => {
-    const fahrenheitUnit: Measure = {
-      classification: Classifications.us,
+    const fahrenheitUnit: Measurement = {
+      measurementSystem: MeasurementSystem.us,
       name: 'fahrenheit',
       quantity: 212,
+      type: MeasurementType.TEMPERATURE,
     };
-    const celsiusUnit: Measure = {
-      classification: Classifications.metric,
+    const celsiusUnit: Measurement = {
+      measurementSystem: MeasurementSystem.metric,
       name: 'celsius',
       quantity: 100,
+      type: MeasurementType.TEMPERATURE,
     };
 
     it('converts from f to c', () => {
       const result = convert({
-        fromUnit: fahrenheitUnit,
-        toClassification: {
-          classification: Classifications.metric,
+        fromMeasurement: fahrenheitUnit,
+        to: {
+          measurementSystem: MeasurementSystem.metric,
           name: 'celsius',
         },
       });
       expect(result.quantity).toStrictEqual(100);
     });
+
+    it('converts from f to c via alias', () => {
+      const result = convert({
+        fromMeasurement: fahrenheitUnit,
+        to: {
+          measurementSystem: MeasurementSystem.metric,
+          name: 'c',
+        },
+      });
+      expect(result.quantity).toStrictEqual(100);
+    });
+
     it('converts from c to f', () => {
       const result = convert({
-        fromUnit: celsiusUnit,
-        toClassification: {
-          classification: Classifications.imperial,
+        fromMeasurement: celsiusUnit,
+        to: {
+          measurementSystem: MeasurementSystem.imperial,
           name: 'fahrenheit',
         },
       });
